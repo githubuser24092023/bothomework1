@@ -5,8 +5,10 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 import sqlite3
 import requests
+import os
+from dotenv import load_dotenv
 
-path = 'app_data/hw1.db'
+path = 'app_data\\hw1.db'
 
 database = sqlite3.connect(path)
 database.execute("""
@@ -27,10 +29,12 @@ database.execute("""
                    );
                  """)
 
-bot = Bot(token='6139001476:AAHuavyih9c4vdxz_EEmQ2-Y4hp8clowmL0')
+load_dotenv()
+api_token = os.getenv('API_TOKEN')
+bot = Bot(token=api_token)
+
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
-
 
 
 class StatesCollection(StatesGroup):
