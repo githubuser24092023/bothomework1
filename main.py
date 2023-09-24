@@ -10,6 +10,8 @@ from dotenv import load_dotenv
 
 path = 'app_data\\hw1.db'
 
+
+
 database = sqlite3.connect(path)
 database.execute("""
                    create table if not exists user
