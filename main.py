@@ -8,11 +8,7 @@ import requests
 import os
 from dotenv import load_dotenv
 
-path = 'app_data/hw1.db'
-
-load_dotenv()
-api_token = os.getenv('API_TOKEN')
-bot = Bot(token=api_token)
+path = 'app_data\\hw1.db'
 
 database = sqlite3.connect(path)
 database.execute("""
@@ -33,6 +29,9 @@ database.execute("""
                    );
                  """)
 
+load_dotenv()
+api_token = os.getenv('API_TOKEN')
+bot = Bot(token=api_token)
 
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
