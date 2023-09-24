@@ -12,7 +12,6 @@ load_dotenv()
 api_token = os.getenv('API_TOKEN')
 bot = Bot(token=api_token)
 
-
 path = 'app_data/hw1.db'
 
 database = sqlite3.connect(path)
@@ -33,6 +32,7 @@ database.execute("""
                      cost number not null
                    );
                  """)
+
 
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
